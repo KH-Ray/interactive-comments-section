@@ -1,0 +1,9 @@
+# Main Folder
+interactive-comments-section-main
+
+# Workspace
+interactive-comments-section-fe.code-workspace
+
+# --------------------------------------------
+node_modules
+.env
