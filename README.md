@@ -32,7 +32,7 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
+- Solution URL: [https://github.com/KH-Ray/interactive-comments-section](https://github.com/KH-Ray/interactive-comments-section)
 - Live Site URL: [https://interative-comments-section-be.fly.dev/](https://interative-comments-section-be.fly.dev/)
 
 ## My process

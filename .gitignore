@@ -10,3 +10,4 @@ node_modules
 .dockerignore
 Dockerfile
 fly.toml
+interactive-comment-section.png
