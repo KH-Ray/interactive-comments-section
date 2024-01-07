@@ -7,3 +7,6 @@ interactive-comments-section-fe.code-workspace
 # --------------------------------------------
 node_modules
 .env
+.dockerignore
+Dockerfile
+fly.toml

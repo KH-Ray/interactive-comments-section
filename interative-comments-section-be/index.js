@@ -1,11 +1,14 @@
 require("dotenv").config();
 const express = require("express");
 const app = express();
+const cors = require("cors");
 const mongoose = require("mongoose");
 const CurrentUser = require("./models/currentUser");
 const Comment = require("./models/comments");
 
+app.use(cors());
 app.use(express.json());
+app.use(express.static("dist"));
 
 const url = process.env.MONGODB_URI;
 
@@ -42,8 +45,8 @@ app.post("/api/comments", async (request, response) => {
     createdAt: "today",
     score: 0,
     user: {
-      image: body.user.image,
-      username: body.user.username,
+      image: "https://i.ibb.co/gwDSSft/image-juliusomo.png",
+      username: "juliusomo",
     },
     replies: [],
   });
@@ -79,7 +82,11 @@ app.post("/api/comments/:id/replies", (request, response) => {
 
   Comment.findById(request.params.id).then((comment) => {
     const reply = {
-      ...body,
+      content: body.content,
+      user: {
+        image: "https://i.ibb.co/gwDSSft/image-juliusomo.png",
+        username: "juliusomo",
+      },
       createdAt: "today",
       score: 0,
       replyingTo: comment.user.username,
@@ -109,11 +116,11 @@ app.put("/api/comments/:id/replies/:id", (request, response) => {
     comment.replies = comment.replies.map((c) => {
       const reply = {
         ...c,
-        content: body.content || c.content,
-        createdAt: body.createdAt || c.createdAt,
-        score: body.score || c.score,
-        replyingTo: body.replyingTo || c.replyingTo,
-        user: body.user || c.user,
+        content: body.content ?? c.content,
+        createdAt: body.createdAt ?? c.createdAt,
+        score: body.score ?? c.score,
+        replyingTo: body.replyingTo ?? c.replyingTo,
+        user: body.user ?? c.user,
       };
 
       if (c.id === request.params.id) return reply;
